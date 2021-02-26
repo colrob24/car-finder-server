@@ -1,0 +1,32 @@
+version: "3.7"
+services:
+  db:
+    image: postgres:12.2
+    restart: always
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: AgnesRuby0310
+      PGDATA: /data
+    volumes:
+    - db-data:/data
+    ports:
+    - "5432:5432"
+  
+  pgadmin:
+    image: dpage/pgadmin4:4.18
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: colin24@live.co.uk
+      PGADMIN_DEFAULT_PASSWORD: AgnesRuby0310
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+    - "8080:80"
+    volumes:
+    - pgadmin-data:/data/pgadmin
+    links:
+    - "db:pgsql-server"
+
+volumes:
+  db-data:
+  pgadmin-data:
