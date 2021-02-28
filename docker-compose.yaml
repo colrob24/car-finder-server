@@ -9,7 +9,9 @@ services:
       POSTGRES_PASSWORD: AgnesRuby0310
       PGDATA: /data
     volumes:
-    - db-data:/data
+    - ./database/data:/data
+    - ./database/01-schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+    - ./database/02-data.sql:/docker-entrypoint-initdb.d/02-data.sql
     ports:
     - "5432:5432"
   
