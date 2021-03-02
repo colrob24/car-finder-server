@@ -29,6 +29,14 @@ services:
     links:
     - "db:pgsql-server"
 
+  server:
+    image: colrob/car-finder-server:latest
+    restart: always
+    ports:
+    - "5001:3001"
+    links:
+    - "db:pgsql-server"
+
 volumes:
   db-data:
   pgadmin-data:
